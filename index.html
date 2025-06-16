@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Project Arcadia</title>
+  <meta name="description" content="Join Project Arcadia: an exclusive, student-powered initiative. Apply now!">
+  <style>
+    :root {
+      --primary: #1e90ff;
+      --secondary: #f5f7fa;
+      --accent: #11b981;
+      --dark: #222;
+      --light: #fff;
+      --radius: 12px;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--secondary);
+      color: var(--dark);
+      min-height: 100vh;
+    }
+    header {
+      background: var(--primary);
+      color: var(--light);
+      padding: 1rem 0;
+      box-shadow: 0 2px 8px rgba(30,144,255,0.07);
+    }
+    .container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 5%;
+    }
+    nav .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      display: inline-block;
+    }
+    nav ul li a {
+      color: var(--light);
+      text-decoration: none;
+      font-size: 1.08rem;
+      transition: opacity 0.2s;
+    }
+    nav ul li a:hover {
+      opacity: 0.8;
+    }
+    main {
+      min-height: 70vh;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--light);
+      padding: 0.85em 2em;
+      border-radius: var(--radius);
+      font-size: 1.1em;
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: 2rem;
+      transition: background 0.2s;
+      box-shadow: 0 2px 12px rgba(17,185,129,0.11);
+    }
+    .cta-btn:hover {
+      background: #0c9a65;
+    }
+    .card {
+      background: var(--light);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      margin: 2rem 0;
+      padding: 2rem;
+    }
+    .hidden {
+      display: none;
+    }
+    /* Contact Form */
+    form.contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 350px;
+      margin-top: 1rem;
+    }
+    form.contact-form input, form.contact-form textarea {
+      padding: 0.7em;
+      border-radius: var(--radius);
+      border: 1px solid #ccc;
+      font-size: 1em;
+      resize: vertical;
+    }
+    form.contact-form button {
+      background: var(--primary);
+      color: var(--light);
+      border: none;
+      padding: 0.7em 1.2em;
+      border-radius: var(--radius);
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    form.contact-form button:hover {
+      background: var(--accent);
+    }
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+    .hamburger span {
+      width: 26px;
+      height: 3px;
+      background: var(--light);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    @media (max-width: 700px) {
+      nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 5%;
+        background: var(--primary);
+        width: 170px;
+        border-radius: var(--radius);
+        box-shadow: 0 2px 16px rgba(30,144,255,0.11);
+        display: none;
+        z-index: 100;
+      }
+      nav ul.open {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .container {
+        padding: 1rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Project Arcadia</div>
+      <div class="hamburger" id="hamburger" tabindex="0" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul id="navbar">
+        <li><a href="#/" data-route="/">Home</a></li>
+        <li><a href="#/about" data-route="/about">About</a></li>
+        <li><a href="#/contact" data-route="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="app" class="container">
+    <!-- Content injected by JS -->
+  </main>
+  <footer style="text-align:center; color:#888; font-size:0.95rem; padding:1rem 0 2rem;">
+    &copy; 2025 Project Arcadia. All rights reserved.
+  </footer>
+  <script>
+    // --- Routing ---
+    function render(route) {
+      const app = document.getElementById('app');
+      switch(route) {
+        case '/':
+          app.innerHTML = `
+            <section>
+              <h1>Welcome to Project Arcadia</h1>
+              <div class="card">
+                <p><b>Project Arcadia</b> is a dynamic, student-driven initiative open to motivated individuals who are ready to make a difference!</p>
+                <ul>
+                  <li>🎯 <strong>Collaborate</strong> on real-world projects and challenges.</li>
+                  <li>🚀 <strong>Grow</strong> your skills and network in a creative environment.</li>
+                  <li>🌱 <strong>Innovate</strong> with like-minded students from various year groups (7-13).</li>
+                </ul>
+                <p>
+                  <a class="cta-btn" href="https://tally.so/r/m6zWyk" target="_blank" rel="noopener">
+                    Apply Now
+                  </a>
+                </p>
+                <p style="font-size:0.96em; color:#888;">
+                  <strong>Note:</strong> Please provide accurate information in your application to avoid losing your offer!
+                </p>
+              </div>
+            </section>
+          `;
+          break;
+        case '/about':
+          app.innerHTML = `
+            <section>
+              <h1>About Project Arcadia</h1>
+              <div class="card">
+                <p>
+                  <b>Who are we?</b><br>
+                  Project Arcadia is a growing group of students passionate about learning, technology, creativity, and community impact.
+                </p>
+                <p>
+                  <b>Our Mission:</b><br>
+                  To bring together students from all year groups (7-13) and empower them to work on meaningful projects, share knowledge, and develop real skills for the future.
+                </p>
+                <p>
+                  <b>How to join?</b><br>
+                  Simply <a href="https://tally.so/r/m6zWyk" target="_blank" rel="noopener">apply here</a> and let us know who referred you!
+                </p>
+              </div>
+            </section>
+          `;
+          break;
+        case '/contact':
+          app.innerHTML = `
+            <section>
+              <h1>Contact Us</h1>
+              <div class="card">
+                <p>Questions? Want to collaborate? Reach out below and we’ll get back to you soon!</p>
+                <form class="contact-form" autocomplete="off" onsubmit="event.preventDefault();alert('Thank you for your message!');this.reset();">
+                  <input type="text" placeholder="Your Name" required>
+                  <input type="email" placeholder="Your Email" required>
+                  <textarea rows="4" placeholder="Your Message" required></textarea>
+                  <button type="submit">Send Message</button>
+                </form>
+                <p style="font-size:0.95em; color:#888; margin-top:1em;">
+                  For applications, please use the <a href="https://tally.so/r/m6zWyk" target="_blank" rel="noopener">official form</a>.
+                </p>
+              </div>
+            </section>
+          `;
+          break;
+        case '/application-test':
+          app.innerHTML = `
+            <section>
+              <h1>Application Test Page</h1>
+              <div class="card">
+                <p>This is a hidden page for testing application access.</p>
+                <p>To officially apply to Project Arcadia, use the button below:</p>
+                <a class="cta-btn" href="https://tally.so/r/m6zWyk" target="_blank" rel="noopener">Go to Application Form</a>
+                <hr>
+                <p style="font-size:0.96em; color:#888;">
+                  <strong>Tip:</strong> Make sure your personal information is accurate to avoid losing your offer!
+                </p>
+              </div>
+            </section>
+          `;
+          break;
+        default:
+          app.innerHTML = `
+            <section>
+              <h1>404</h1>
+              <p>Sorry, the page you're looking for doesn't exist.</p>
+            </section>
+          `;
+      }
+      // Scroll to top after navigation
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    // --- Hash-based navigation ---
+    function parseRoute() {
+      const hash = window.location.hash || '#/';
+      const route = hash.replace(/^#/, '') || '/';
+      return route;
+    }
+
+    function navigate(e) {
+      if (e.target.matches('[data-route]')) {
+        e.preventDefault();
+        window.location.hash = e.target.getAttribute('href');
+        closeMenu();
+      }
+    }
+
+    window.addEventListener('hashchange', () => render(parseRoute()));
+    document.addEventListener('DOMContentLoaded', () => {
+      render(parseRoute());
+      document.body.addEventListener('click', navigate);
+      // Hamburger menu
+      const hamburger = document.getElementById('hamburger');
+      const navbar = document.getElementById('navbar');
+      hamburger.addEventListener('click', () => {
+        navbar.classList.toggle('open');
+      });
+      hamburger.addEventListener('keypress', (e) => {
+        if(e.key==='Enter' || e.keyCode===13) navbar.classList.toggle('open');
+      });
+      // Close menu on route change (mobile)
+      window.addEventListener('hashchange', closeMenu);
+      function closeMenu() {
+        navbar.classList.remove('open');
+      }
+    });
+
+    // Enable deep linking to /application-test
+    if (!window.location.hash && window.location.pathname.endsWith('application-test')) {
+      window.location.hash = '#/application-test';
+    }
+  </script>
+</body>
+</html>
